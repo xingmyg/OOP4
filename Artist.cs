@@ -4,9 +4,9 @@ public class Artist
 {
     // Properties
     public string Naam { get; set; }
-    public List<Album> Albums { get; set; }
+    private List<Album> Albums { get; set; }
     public int Duur { get; set; }
-    public List<Song> Songs { get; set; }
+    private List<Song> Songs { get; set; }
 
     // Constructor
     public Artist(string naam)

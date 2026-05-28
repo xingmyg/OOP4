@@ -4,7 +4,7 @@ public class Song : IPlayable
 	public string Title { get; set; }
 	public List<Artist> Artists { get; set; }
 	public Genre SongGenre { get; set; }
-	public int Duur { get; set; }
+	private int Duur { get; set; }
 
 	// Constructor
 	public Song(string title, List<Artist> artists, int duur, Genre songGenre)
