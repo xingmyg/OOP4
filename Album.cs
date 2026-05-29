@@ -2,7 +2,7 @@ public class Album : SongCollection
 {
     private List<Artist> Artists;
 
-    public Album(List<Artist> artists, string title, List<Song> songs)
+   public Album(List<Artist> artists, string title, List<Song> songs) : base(title)
     {
         Artists = artists;
         Title = title;

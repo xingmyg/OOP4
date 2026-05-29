@@ -1,34 +1,15 @@
-public class SuperUser
+public class SuperUser : Person
 {
+    public SuperUser(string naam) : base(naam) { }
 
-    // Constructor
-    public SuperUser()
+    public Playlist CreatePlayList(string name)
     {
+        var playlist = new Playlist(this, name);
+        Playlists.Add(playlist);
+        return playlist;
     }
 
-    // Methoden
-    public void AddFriend(Person person)
-    {
-    }
-
-    public void RemoveFriend(Person person)
-    {
-    }
-
-    public PlayList CreatePlayList(string name)
-    {
-        return null;
-    }
-
-    public void RemovePlayList(int index)
-    {
-    }
-
-    public void AddToPlayList(iPlayable playable)
-    {
-    }
-
-    public void RemoveFromPlayList(iPlayable playable)
-    {
-    }
+    public void RemovePlayList(int index) => Playlists.RemoveAt(index);
+    public void AddToPlayList(IPlayable playable) => CurrentPlaylist?.Add(playable);
+    public void RemoveFromPlayList(IPlayable playable) => CurrentPlaylist?.Remove(playable);
 }

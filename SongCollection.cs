@@ -1,25 +1,21 @@
-using System.Collections.Generic;
-
-public class SongCollection
+public class SongCollection : IPlayable
 {
-    // Fields
-    public string Title;
-    private List<iPlayable> playables;
+    public string Title { get; set; }
+    protected List<IPlayable> playables;
+    public int Length => playables?.Sum(p => p.Length) ?? 0;
 
-    // Constructor
     public SongCollection(string title)
     {
         Title = title;
+        playables = new List<IPlayable>();
     }
 
-    // Methods
-    public override string ToString()
-    {
-        return "";
-    }
+    public void Play() { }
+    public void Pause() { }
+    public void Next() { }
+    public void Stop() { }
 
-    public List<iPlayable> ShowPlayables()
-    {
+    public List<IPlayable> ShowPlayables() => playables;
 
-    }
+    public override string ToString() => Title;
 }

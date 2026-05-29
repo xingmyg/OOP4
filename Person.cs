@@ -3,7 +3,9 @@ public class Person
     // Properties
     public string Naam { get; set; }
     private List<Person> Friends { get; set; }
-    private List<Playlist> Playlists { get; set; }
+    public List<Playlist> Playlists { get; set; }
+    protected Playlist? CurrentPlaylist { get; set; } 
+    
 
     // Constructor
     public Person(string naam)
@@ -28,4 +30,7 @@ public class Person
     {
         return $"Person: {Naam}, Friends: {Friends.Count}, Playlists: {Playlists.Count}";
     }
+
+    public void AddFriend(Person person) => Friends.Add(person);
+    public void RemoveFriend(Person person) => Friends.Remove(person);
 }
