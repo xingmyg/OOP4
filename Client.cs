@@ -8,16 +8,16 @@ public class Client
     private SuperUser? ActiveUser;
     private List<Album> AllAlbums;
     private List<Song> AllSongs;
-    private List<SuperUser> AllUsers;
+    private List<Person> AllUsers;
 
-   public Client(List<SuperUser> allUsers, List<Album> allAlbums, List<Song> allSongs)
+   public Client(List<Person> allUsers, List<Album> allAlbums, List<Song> allSongs)
     {
         AllUsers = allUsers;
         AllAlbums = allAlbums;
         AllSongs = allSongs;
     }
 
-    public void SetActiveUser(SuperUser user) => ActiveUser = user;
+    public void SetActiveUser(Person user) => ActiveUser = (SuperUser) user;
 
     public void ShowAllAlbums() { }
     public void ShowAllSongs() { }
