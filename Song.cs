@@ -16,7 +16,10 @@ public class Song : IPlayable
 	}
 
 	// IPlayable methoden
-	public void Play() { }
+	public void Play()
+	{
+    	Console.WriteLine($"Nu aan het spelen: {Title} ({Duur} seconden)");
+	}
 	public void Pause() { }
 	public void Next() { }
 	public void Stop() { }
