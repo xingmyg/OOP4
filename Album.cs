@@ -6,6 +6,10 @@ public class Album : SongCollection
     {
         Artists = artists;
         Title = title;
+        foreach (var song in songs)
+    {
+        playables.Add(song);
+    }
     }
 
     public List<Artist> ShowArtists() => Artists;

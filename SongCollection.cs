@@ -10,7 +10,14 @@ public class SongCollection : IPlayable
         playables = new List<IPlayable>();
     }
 
-    public void Play() { }
+    public void Play()
+{
+    Console.WriteLine($"Album {Title} wordt afgespeeld:");
+    foreach (var playable in playables)
+    {
+        playable.Play();
+    }
+}
     public void Pause() { }
     public void Next() { }
     public void Stop() { }
