@@ -4,6 +4,6 @@ public interface IPlayable
     int Length { get;}
     void Play();
     void Pause();
-    void Next();
+
     void Stop();
 }

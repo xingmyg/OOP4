@@ -19,7 +19,7 @@ public class SongCollection : IPlayable
     }
 }
     public void Pause() { }
-    public void Next() { }
+    public void Rewind() { }
     public void Stop() { }
 
     public List<IPlayable> ShowPlayables() => playables;
