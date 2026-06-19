@@ -38,11 +38,26 @@ public class Client
     public void SetRepeat(bool repeat) => Repeat = repeat;
 
     public Playlist? CreatePlaylist(string title) => ActiveUser?.CreatePlayList(title);
-    public void ShowPlaylists() { }
+    public void ShowPlaylists()
+{
+    var playlists = ActiveUser?.ShowPlaylists();
+    if (playlists == null) return;
+
+    for (int i = 0; i < playlists.Count; i++)
+        Console.WriteLine($"{i}: {playlists[i]}");
+}
     public void SelectPlaylist(int index) => ActiveUser?.SelectPlaylist(index);
     public void RemovePlaylist(int index) => ActiveUser?.RemovePlayList(index);
     public void AddToPlaylist(int index) => ActiveUser?.AddToPlayList(AllSongs[index]);
-    public void ShowSongsInPlaylist(int index) { }
+    public void ShowSongsInPlaylist(int index)
+{
+    var playlists = ActiveUser?.ShowPlaylists();
+    if (playlists == null || index >= playlists.Count) return;
+
+    var songs = playlists[index].ShowPlayables();
+    for (int i = 0; i < songs.Count; i++)
+        Console.WriteLine($"{i}: {songs[i]}");
+}
     public void RemoveFromPlaylist(int index) => ActiveUser?.RemoveFromPlayList(AllSongs[index]);
 
     public void ShowFriends() { }

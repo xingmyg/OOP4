@@ -3,8 +3,7 @@ public class Person
     // Properties
     public string Naam { get; set; }
     private List<Person> Friends { get; set; }
-    public List<Playlist> Playlists { get; set; }
-    protected Playlist? CurrentPlaylist { get; set; } 
+    private List<Playlist> Playlists { get; set; } 
     
 
     // Constructor
@@ -19,6 +18,11 @@ public class Person
     public List<Person> ShowFriends()
     {
         return Friends;
+    }
+
+    public List<Playlist> ShowPlaylists()
+    {
+        return Playlists;
     }
 
     public Playlist SelectPlaylist(int index)
