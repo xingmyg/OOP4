@@ -13,9 +13,9 @@ Song song8 = new Song("Don't", new List<Artist> { artist1 }, 219, Genre.Pop);
 Song song9 = new Song("Lego House", new List<Artist> { artist1 }, 193, Genre.Pop);
 Song song10 = new Song("Photograph", new List<Artist> { artist1 }, 258, Genre.Pop);
 
-List<Song> songs = new List<Song> 
-{ 
-    song1, song2, song3, song4, song5, song6, song7, song8, song9, song10 
+List<Song> songs = new List<Song>
+{
+    song1, song2, song3, song4, song5, song6, song7, song8, song9, song10
 };
 
 // Albums
@@ -27,6 +27,7 @@ List<Album> albums = new List<Album>
 
 //user
 SuperUser user = new SuperUser("Jij");
+Client client = new Client(new List<Person>(), albums, songs);
 
 Console.WriteLine("Wat wil je doen?");
 Console.WriteLine("1. Albums bekijken");
@@ -65,7 +66,25 @@ else if (hoofdKeuze == 2)
 
     if (nummerKeuze >= 1 && nummerKeuze <= songs.Count)
     {
-        songs[nummerKeuze - 1].Play();
+        Console.WriteLine("Volgende nummer? (j/n)");
+        if (Console.ReadLine() == "j")
+        {
+            client.NextSong();
+        }
+        else
+        {
+            Console.WriteLine("Geen volgend nummer geselecteerd.");
+        }
+
+        Console.WriteLine("Stop? (j/n)");
+        if (Console.ReadLine() == "j")
+        {
+            client.StopSong();
+        }
+        else
+        {
+            Console.WriteLine("Nummer wordt niet gestopt.");
+        }
     }
 }
 else if (hoofdKeuze == 3)

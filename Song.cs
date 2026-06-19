@@ -18,11 +18,14 @@ public class Song : IPlayable
 	// IPlayable methoden
 	public void Play()
 	{
-    	Console.WriteLine($"Nu aan het spelen: {Title} ({Duur} seconden)");
+		Console.WriteLine($"Nu aan het spelen: {Title} ({Duur} seconden)");
 	}
 	public void Pause() { }
-	public void Next() { }
-	public void Stop() { }
+
+	public void Stop()
+	{
+		Console.WriteLine($"{Title} is gestopt.");
+	}
 	public int Length { get; set; }
 
 	public override string ToString()

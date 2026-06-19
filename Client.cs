@@ -10,14 +10,14 @@ public class Client
     private List<Song> AllSongs;
     private List<Person> AllUsers;
 
-   public Client(List<Person> allUsers, List<Album> allAlbums, List<Song> allSongs)
+    public Client(List<Person> allUsers, List<Album> allAlbums, List<Song> allSongs)
     {
         AllUsers = allUsers;
         AllAlbums = allAlbums;
         AllSongs = allSongs;
     }
 
-    public void SetActiveUser(Person user) => ActiveUser = (SuperUser) user;
+    public void SetActiveUser(Person user) => ActiveUser = (SuperUser)user;
 
     public void ShowAllAlbums() { }
     public void ShowAllSongs() { }
@@ -32,8 +32,28 @@ public class Client
 
     public void Play() => Playing = true;
     public void Pause() => Playing = false;
-    public void Stop() { Playing = false; CurrentTime = 0; }
-    public void NextSong() { }
+    public void StopSong()
+    {
+        CurrentlyPlaying?.Stop();
+        CurrentlyPlaying = null;
+        Playing = false;
+    }
+    public void NextSong()
+    {
+        if (CurrentlyPlaying == null) return;
+
+        int HuidigIndex = AllSongs.IndexOf((Song)CurrentlyPlaying);
+        if (HuidigIndex + 1 < AllSongs.Count)
+        {
+            SelectSong(HuidigIndex + 1);
+            CurrentlyPlaying?.Play();
+        }
+        else
+        {
+            Console.WriteLine("Geen volgend nummer beschikbaar.");
+        }
+    }
+    
     public void SetShuffle(bool shuffle) => Shuffle = shuffle;
     public void SetRepeat(bool repeat) => Repeat = repeat;
 
