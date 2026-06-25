@@ -11,5 +11,8 @@ public class Playlist : SongCollection
     public void Add(IPlayable playable) => playables.Add(playable);
     public void Remove(IPlayable playable) => playables.Remove(playable);
 
+
+    public List<IPlayable> GetSongs() => ShowPlayables();
+    
     public override string ToString() => $"Playlist: {Title}, Owner: {Owner.Naam}";
 }

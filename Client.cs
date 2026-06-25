@@ -61,22 +61,45 @@ public class Client
     public void ShowPlaylists()
 {
     var playlists = ActiveUser?.ShowPlaylists();
-    if (playlists == null) return;
+    if (playlists == null || playlists.Count == 0)
+    {
+        Console.WriteLine("Je hebt nog geen playlists.");
+        return;
+    }
 
     for (int i = 0; i < playlists.Count; i++)
-        Console.WriteLine($"{i}: {playlists[i]}");
+        Console.WriteLine($"{i + 1}. {playlists[i]}");
+
+    Console.WriteLine("\nKies een playlist (of 0 om terug te gaan):");
+    int keuze = int.Parse(Console.ReadLine() ?? "0");
+
+    if (keuze >= 1 && keuze <= playlists.Count)
+    {
+        ShowSongsInPlaylist(keuze - 1);
+
+        Console.WriteLine("\nWil je deze playlist afspelen? (j/n)");
+        if (Console.ReadLine() == "j")
+        {
+            CurrentlyPlaying = playlists[keuze - 1];
+            CurrentlyPlaying.Play();
+        }
+    }
 }
     public void SelectPlaylist(int index) => ActiveUser?.SelectPlaylist(index);
     public void RemovePlaylist(int index) => ActiveUser?.RemovePlayList(index);
     public void AddToPlaylist(int index) => ActiveUser?.AddToPlayList(AllSongs[index]);
     public void ShowSongsInPlaylist(int index)
 {
-    var playlists = ActiveUser?.ShowPlaylists();
-    if (playlists == null || index >= playlists.Count) return;
+    var songs = ActiveUser?.SelectPlaylist(index).GetSongs();
 
-    var songs = playlists[index].ShowPlayables();
-    for (int i = 0; i < songs.Count; i++)
-        Console.WriteLine($"{i}: {songs[i]}");
+    if (songs == null || songs.Count == 0)
+    {
+        Console.WriteLine("Deze speellijst is leeg.");
+        return;
+    }
+
+    foreach (var song in songs)
+        Console.WriteLine(song);
 }
     public void RemoveFromPlaylist(int index) => ActiveUser?.RemoveFromPlayList(AllSongs[index]);
 
