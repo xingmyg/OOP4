@@ -3,8 +3,8 @@ public class Person
     // Properties
     public string Naam { get; set; }
     private List<Person> Friends { get; set; }
-    private List<Playlist> Playlists { get; set; } 
-    
+    private List<Playlist> Playlists { get; set; }
+
 
     // Constructor
     public Person(string naam)
