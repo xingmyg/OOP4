@@ -76,7 +76,8 @@ while (true)
         {
             client.SelectSong(NummerKeuze - 1);
             client.Play();
-
+            
+            
             Console.WriteLine("Volgende nummer? (j/n)");
             if (Console.ReadLine() == "j")
                 client.NextSong();

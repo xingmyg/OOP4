@@ -30,7 +30,11 @@ public class Client
     public void ShowUserPlaylists() { }
     public void SelectUserPlaylists(int index) { }
 
-    public void Play() => Playing = true;
+    public void Play()
+{
+    Playing = true;
+    CurrentlyPlaying?.Play();
+}
     public void Pause() => Playing = false;
     public void StopSong()
     {
