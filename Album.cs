@@ -1,0 +1,18 @@
+public class Album : SongCollection
+{
+    private List<Artist> Artists;
+
+   public Album(List<Artist> artists, string title, List<Song> songs) : base(title) //opzoeken waarom base(title)
+    {
+        Artists = artists;
+        Title = title;
+        foreach (var song in songs)
+    {
+        playables.Add(song);
+    }
+    }
+
+    public List<Artist> ShowArtists() => Artists;
+
+    public override string ToString() => $"Album: {Title}, Artists: {Artists.Count}";
+}
